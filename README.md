@@ -1,28 +1,41 @@
-# Sentiment Analysis on Movie Reviews
+# Sentiment Analysis on IMDB Movie Reviews
 
-## Project Overview
+Classifies movie reviews as positive or negative using TF-IDF vectorization and Logistic Regression, trained on the real IMDB Large Movie Review Dataset (50,000 reviews).
 
-This project builds a binary sentiment classifier to predict whether a movie review is **positive** or **negative** using the IMDb Large Movie Review Dataset. It demonstrates a complete machine learning pipeline including:
+## Overview
+- Downloads and extracts the Stanford IMDB dataset automatically (25,000 train / 25,000 test reviews)
+- Vectorizes review text using TF-IDF with unigrams and bigrams, English stop-word removal
+- Trains a Logistic Regression classifier on 20,000 samples, validates on 5,000
+- Evaluates with accuracy, a full classification report, and a confusion matrix
 
-- Automatic dataset download and extraction
-- Data loading and preprocessing
-- Text vectorization using TF-IDF with unigrams and bigrams
-- Training a Logistic Regression classifier
-- Model evaluation with accuracy, classification report, and confusion matrix visualization
+## Results
+- **Validation Accuracy:** 87.74%
 
-This project is designed to be easy to run, well-structured, and suitable for showcasing practical machine learning skills on text data.
+| Class | Precision | Recall | F1-Score | Support |
+|---|---|---|---|---|
+| Negative | 0.89 | 0.86 | 0.88 | 2500 |
+| Positive | 0.87 | 0.89 | 0.88 | 2500 |
+| **Accuracy** | | | **0.88** | 5000 |
 
----
+![Confusion Matrix](confusion_matrix.png)
+
+## Key Insight
+The model performs strongly and evenly across both classes (F1 of 0.88 for both), showing balanced performance — it doesn't favor detecting one sentiment over the other, which is exactly what you want on a class-balanced dataset like this one.
+
+## Tech Stack
+Python, Scikit-learn, NumPy, Matplotlib, Requests, tqdm
+
+## How to Run
+```bash
+pip install -r requirements.txt
+python sentiment_analysis.py
+```
+Note: the first run downloads the IMDB dataset (~80MB) and extracts 50,000 text files, so it may take a few minutes.
 
 ## Dataset
+[IMDB Large Movie Review Dataset](https://ai.stanford.edu/~amaas/data/sentiment/) — Maas et al., Stanford AI Lab
 
-The project uses the [IMDb Large Movie Review Dataset](https://ai.stanford.edu/~amaas/data/sentiment/), which contains 50,000 movie reviews labeled as positive or negative. The dataset is automatically downloaded and extracted by the code.
-
----
-
-## Installation
-
-Make sure you have Python 3 installed. Then install the required Python packages:
-
-```bash
-pip install numpy pandas scikit-learn matplotlib requests tqdm
+## Future Improvements
+- Compare against other models (Naive Bayes, SVM, or a fine-tuned transformer like BERT)
+- Try word embeddings (Word2Vec, GloVe) instead of TF-IDF
+- Deploy as an interactive Streamlit demo for live sentiment predictions
