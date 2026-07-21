@@ -1,5 +1,7 @@
-requests
+streamlit
 tqdm
 numpy
 scikit-learn
 matplotlib
+joblib
+requests
