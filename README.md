@@ -1,3 +1,5 @@
+https://sentiment-analysis-kchq2qkydrlqmoxtvae63d.streamlit.app
+
 # Sentiment Analysis on IMDB Movie Reviews
 
 Classifies movie reviews as positive or negative using TF-IDF vectorization and Logistic Regression, trained on the real IMDB Large Movie Review Dataset (50,000 reviews).
